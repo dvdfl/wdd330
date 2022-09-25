@@ -1,0 +1,36 @@
+<!doctype html>
+<html>
+<head>
+	<title>Longest Word</title>
+	<script>
+		function showLongest() {
+			// getting phrase
+			let phrase = document.getElementById("phrase").value;
+			// converting string to array
+			let words = phrase.split(' ');
+			// initializing variable
+			let longest = "";
+			// finging longest word
+			words.forEach(w => {
+				if (w.length > longest.length) {
+					longest = w;
+				}
+			});
+			// displaying result
+			var resultEl = document.getElementById("result");
+			resultEl.innerHTML = longest;
+		}
+	</script>
+
+</head>
+
+<body>
+	<h1>Longest Word</h1>
+	Enter phrase:<input id="phrase" />
+
+	<button onclick="showLongest()">Find Longest</button>
+	<br />
+	<hr />
+	<section id="result"></section>
+</body>
+</html>

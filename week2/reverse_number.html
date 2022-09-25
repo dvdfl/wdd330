@@ -1,0 +1,34 @@
+<!doctype html>
+<html>
+<head>
+	<title>Reverse Number</title>
+  <script>
+	 
+	  function reverseNumber() {
+		  // getting value
+		  let number = document.getElementById("number").value;
+		  // converting value to string
+		  reversedNumber = number.toString();
+          // converting string to array
+		  reversedNumber = reversedNumber.split('');
+          // reverse sorting array elements
+          reversedNumber = reversedNumber.reverse();
+          // displaying result
+		  let resultEl = document.getElementById("result");
+		  resultEl.innerHTML = reversedNumber.join('');
+	 }
+  </script>
+
+</head>
+
+<body>
+    <h1>Reverse Number</h1>
+    <p>
+    Enter number:<input id="number" />
+        <button onclick="reverseNumber()">Reverse</button>
+    </>
+    <br />
+    <hr />
+    <section id="result"></section>
+</body>
+</html>

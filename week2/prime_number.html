@@ -1,0 +1,33 @@
+<!doctype html>
+<html>
+<head>
+	<title>Prime Number</title>
+	<script>
+		function checkPrime() {
+			// getting number
+			let number = document.getElementById("number").value;
+			let divisorCount = 0;
+			// checking
+			for (var i = 1; i < number; i++) {
+				if (number % i == 0) {
+					divisorCount++;
+                }
+            }
+			// displaying result
+			var resultEl = document.getElementById("result");
+            resultEl.innerHTML = divisorCount == 1 ? `${number} is prime` : `${number} is not a prime number`;
+		}
+	</script>
+
+</head>
+
+<body>
+	<h1>Prime Number</h1>
+	Enter numer:<input id="number" />
+
+	<button onclick="checkPrime()">Check</button>
+	<br />
+	<hr />
+	<section id="result"></section>
+</body>
+</html>

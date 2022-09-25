@@ -1,0 +1,79 @@
+<!doctype html>
+<html>
+<head>
+	<title>Longest Word</title>
+	<script>
+		function calculate(operation) {
+            // getting numbers
+            let numbers = getValues();
+
+			// performing operation
+			if (operation == 'add') {
+				sum(numbers, displayResult);
+
+            } else if (operation == 'substract') {
+				substract(numbers, displayResult);
+
+            } else if (operation == 'multiply') {
+				multiply(numbers, displayResult);
+
+			} else {
+				divide(numbers, displayResult);
+
+            }
+		}
+		function displayResult(value) {
+			// displaying result
+			var resultEl = document.getElementById("result");
+            resultEl.innerHTML = value;
+		}
+		function sum(numbers, callbackFn) {
+			// adding
+			let result = numbers[0] + numbers[1];
+			callbackFn(result)
+		}
+		function substract(numbers, callbackFn) {
+			// substracting
+            let result = numbers[0] - numbers[1];
+            callbackFn(result)
+        }
+		function multiply(numbers, callbackFn) {
+			// multiplying
+            let result = numbers[0] * numbers[1];
+            callbackFn(result)
+        }
+		function divide(numbers, callbackFn) {
+			// dividing 
+            let result = numbers[0] / numbers[1];
+            callbackFn(result)
+        }
+
+		function getValues() {
+			// reading values
+            let number1 = parseInt(document.getElementById("number1").value);
+            let number2 = parseInt(document.getElementById("number2").value);
+			return [number1, number2];
+        }
+	</script>
+
+</head>
+
+<body>
+	<h1>Callback functions</h1>
+	<p>Enter 2 numbers and click the selected operation</p>
+	<p>
+		Enter number 1:<input id="number1" />
+		<br />
+		Enter number 2:<input id="number2" />
+		<br />
+		<button onclick="calculate('add')">Add</button>
+		<button onclick="calculate('substract')">Substract</button>
+		<button onclick="calculate('multiply')">Multiply</button>
+		<button onclick="calculate('divide')">Divide</button>
+	</p>
+
+	<br />
+	<hr />
+	<section id="result"></section>
+</body>
+</html>
