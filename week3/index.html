@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>WDD 330 - Week 3 - Notes</title>
+
+	<link rel="stylesheet" href="../css/main.css">
+
+</head>
+
+<body>
+	<h1>Week 3 - Notes</h1>
+
+	<h2>Notes:</h2>
+	<h3>This</h3>
+	<p><code>this</code> is a keyword whose value changes depending on how a function gets called. Six differnt ways are</p>
+	<ul>
+		<li>In global context. outside of any function it can referr the <code>window</code> object </li>
+		<li>
+			In object construction. Here it references the instance of the object
+		</li>
+		<li>In an object method. Also, refers to the instance.</li>
+		<li>
+			In a simple function. Referrs the <code>window</code> object
+		</li>
+		<li>
+			In an arrow function. References the object
+		</li>
+		<li>
+			In an event listener. It is set to the element that fired the event in an event listener:
+		</li>
+	</ul>
+	<p>We can change the <code>this</code> context using bind method (not for arrow functions)</p>
+
+	<h3>Objects</h3>
+	<p>Objects are self-contained sets of related values or functions. the act as a collection of named properites</p>
+	<p>Two methods to create objects are:</p>
+	<ul>
+		<li>literal object definition: <code>const obj = {};</code></li>
+		<li>using constructor <code>const obj = new Object();</code></li>
+	</ul>
+	<p>Objects are copied by reference. </p>
+	<p>Literal objects are preferred for shorter definition. ES6 provides shorthand method where property key is same as variable name. They can also be used as parameters <code>function greet ({greeting, name, age}) { alert("`${greeting} ${name}`")}</code></p>
+	<p>We can use <code>prop in obj</code> or <code>hasOwnProperty(key)</code> method to check if property exists on object. we can also delete a property using delete method: <code>delete obj.property</code></p>
+	<p>JSON string is just like literal object with few diferences.</p>
+	<p>Math object provides values of constants and methods math operations.</p>
+
+
+	<h3>Document Object Model (DOM)</h3>
+	<p>The Document Object Model (DOM) allows to access elements of a web page and enable interation like adding or removing elements, their content and events</p>
+	<p>Node objects have type accessed using nodeType property, most common types are :</p>
+	<ul>
+		<li>1 - element</li>
+		<li>2 - attribute</li>
+		<li>3 - text</li>
+		<li>8 - comment</li>
+		<li>9 - body</li>
+	</ul>
+	<p>Node lists are not arrays although the can be accessed using index but they can be turned into Array using the method <code>Array.from(</code>.</p>
+
+
+	<h3>Events</h3>
+	<p>Events are another part of the DOM are the link between web page and user interactions from:</p>
+	<ul>
+		<li>Mouse</li>
+		<li>Keyboard</li>
+		<li>Touch</li>
+	</ul>
+	<hr />
+	<h2>Exercises:</h2>
+	<ol>
+		<li><a href="team-activity.html">Team Activity</a></li>
+		<li><a href="update_dropdown.html">adding and removing options from dropdown</a></li>
+		<li><a href="check_dom_value.html">JavaScript function to check whether a given value is a DOM element</a></li>
+		<li><a href="object_to_list.html">JavaScript function to convert an object into a list of `[key, value]` pairs.</a></li>
+	</ol>
+	<hr />
+	<h2>Questions:</h2>
+
+	<ul>
+		<!--<li></li>-->
+	</ul>
+</body>
+</html>
