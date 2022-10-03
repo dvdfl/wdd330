@@ -3,15 +3,36 @@
 <head>
 	<title>Object to List</title>
 	<script>
-		
+		function convertToList() {
+			// reading entry
+			let objectText = document.getElementById("obj_text").value;
+			// parsing text
+			const jsonObject = JSON.parse(objectText)
+			// creating list
+			let list = new Array();
+			for (var i in jsonObject) {
+				// console.log(i);
+				list.push([i, jsonObject[i]]);
+			}
+
+			// displaying result
+			console.log(list)
+            var resultEl = document.getElementById("result");
+            resultEl.innerHTML = list + "<br><br> (Please see console for better display of results)";
+        }
 	</script>
 
 </head>
 
 <body>
 	<h1>Object to List</h1>
-	Object:<textarea id="obj_text">{}</textarea>
-
+	Object:
+    <br /><textarea id="obj_text" cols="50" rows="5">{
+  "name" : "David Rayy",
+  "sclass" : "VI",
+  "rollno" : 12 
+}</textarea>
+          <br />
 	<button onclick="convertToList()">Convert to List</button>
 	<br />
 	<hr />
