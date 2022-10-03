@@ -109,15 +109,34 @@
       // 6. create a list of Boulevards in Paris that contain 'de' anywhere in the name
       // https://en.wikipedia.org/wiki/Category:Boulevards_in_Paris
       // goto the link above and open the console. Paste the following two lines in.  That will create a list of links in memory that you can reference through the console. Use that list to finish the problem.
-      // const category = document.querySelector('.mw-category');
-      // const links = Array.from(category.querySelectorAll('a'));
+        /*const category = document.querySelector('.mw-category');
+        const links = Array.from(category.querySelectorAll('a'));
+        links.filter(e => e.innerText.indexOf('de') > 0).map(e => e.innerText)*/
+        let boulevards = ["Boulevard de l'Amiral-Bruix", 'Boulevard des Capucines', 'Boulevard de la Chapelle', 'Boulevard de Clichy', "Boulevard de l'Hôpital", 'Boulevard des Italiens', 'Boulevard de la Madeleine', 'Boulevard de Magenta', 'Boulevard Marguerite-de-Rochechouart', 'Boulevard de Sébastopol', 'Boulevard de Strasbourg', 'Boulevard de la Zone']
 
       // 7. sort Exercise
-      // Sort the people alphabetically by last name
+        // Sort the people alphabetically by last name
+        let sortedNames = people.sort((a, b) => {
+            const nameA = a.toUpperCase(); // ignore upper and lowercase
+            const nameB = b.toUpperCase(); // ignore upper and lowercase
+
+            //console.log(`comparing '${nameA}' vs '${nameB}'`)
+            if (nameA < nameB) {
+                //console.log("return -1")
+                return -1;
+            }
+            if (nameA > nameB) {
+                //console.log("return 1")
+                return 1;
+            }
+            //console.log("return 0")
+            // names must be equal
+            return 0;
+        })
+        console.table(sortedNames);
 
       // 8. Reduce Exercise
       // Sum up the instances of each of these
-
       const data = [
         'car',
         'car',
@@ -133,7 +152,17 @@
         'van',
         'car',
         'truck'
-      ];
+        ];
+        let sumList = [];
+        data.forEach(i => {
+            if (i in sumList) {
+                sumList[i]++;
+            }
+            else {
+                sumList[i] = 1;
+            } 
+        })
+        console.table(sumList)
     </script>
 </body>
 </html>
