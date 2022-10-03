@@ -3,22 +3,50 @@
 <head>
     <title>Update Dropdown List</title>
     <script>
-
+        const dropdown = {
+            elementId: "myOptions",
+            getDropdown: function () { return document.getElementById(this.elementId); },
+            getOptionsLists: function () { return document.querySelectorAll("#" + this.elementId + " option"); },
+            addOption: function (value) {
+                const newOption = document.createElement("option");
+                newOption.textContent = value;
+                this.getDropdown().appendChild(newOption);
+            },
+            removeOption: function (value) {
+                const options = Array.from(this.getOptionsLists());
+                let toRemove = options.find(el => el.textContent == value);
+                this.getDropdown().removeChild(toRemove);
+            }
+        }
+        function addOption() {
+            let value = document.getElementById("optionText").value;
+            if (value) {
+                dropdown.addOption(value)
+            }
+        }
+        function removeOption() {
+            let value = document.getElementById("optionText").value;
+            if (value) {
+                dropdown.removeOption(value)
+            }
+        }
     </script>
 
 </head>
 
 <body>
     <h1>Update Dropdown List</h1>
-    optin:<input id="property_name" />
+    Option: <input id="optionText" />
 
-    <button onclick="addProperty()">Add Property</button>
-    <button onclick="removeProperty()">Remove Property</button>
+    <button onclick="addOption()">Add Option</button>
+    <button onclick="removeOption()">Remove option</button>
     <br />
     <hr />
     <section id="result">
         <select id="myOptions">
-            <option></option>
+            <option>option 1</option>
+            <option>option 2</option>
+            <option>option 3</option>
         </select>
     </section>
 </body>
