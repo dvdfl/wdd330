@@ -3,29 +3,37 @@
 <head>
 	<title>Circle Object Number</title>
 	<script>
-        function calculate() {
+		const circle = {
+			radius: 0,
+			calculatePerimeter(r) { return Math.PI * this.radius; },
+            calculateArea(r) { return Math.PI * Math.pow(this.radius, 2); }
+
+		};
+
+		function calculate() {
 			// getting number
-			let number = document.getElementById("number").value;
-			let divisorCount = 0;
-			// checking
-			for (var i = 1; i < number; i++) {
-				if (number % i == 0) {
-					divisorCount++;
-                }
-            }
+			let radius = document.getElementById("number").value;
+			// setting radius property
+			circle.radius = radius;
+			
+			// do calculations
+            const perimeter = circle.calculatePerimeter(radius);
+            const area = circle.calculateArea(radius);
+
 			// displaying result
 			var resultEl = document.getElementById("result");
-            resultEl.innerHTML = divisorCount == 1 ? `${number} is prime` : `${number} is not a prime number`;
+			resultEl.innerHTML = `Perimeter is ${perimeter.toFixed(2)}<br>Area is: ${area.toFixed(2)}`;
 		}
+
 	</script>
 
 </head>
 
 <body>
 	<h1>Circle Object</h1>
-	Enter radius of the circle:<input id="number" />
+	Enter radius of the circle: <input id="number" size="5"/>
 
-	<button onclick="calculate()">Check</button>
+	<button onclick="calculate()">Calculate</button>
 	<br />
 	<hr />
 	<section id="result"></section>
