@@ -1,0 +1,33 @@
+﻿<!doctype html>
+<html>
+<head>
+	<title>Groups</title>
+	<script>
+        class Group {
+            // Your code here.
+        }
+
+        let group = Group.from([10, 20]);
+        console.log(group.has(10));
+        // → true
+        console.log(group.has(30));
+        // → false
+        group.add(10);
+        group.delete(10);
+        console.log(group.has(10));
+// → false
+
+	</script>
+
+</head>
+
+<body>
+    <h1>Groups</h1>
+	Enter radius of the circle: <input id="number" size="5"/>
+
+	<button onclick="calculate()">Calculate</button>
+	<br />
+	<hr />
+	<section id="result"></section>
+</body>
+</html>
