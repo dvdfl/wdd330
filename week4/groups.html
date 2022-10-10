@@ -5,6 +5,25 @@
 	<script>
         class Group {
             // Your code here.
+            constructor(array) {
+                this._items = array;
+            }
+            has(item) {
+                return this._items.indexOf(item) > -1;
+            }
+            static from(elements) {
+                return new Group(Array.from(elements));
+            }
+            add(item) {
+                this._items.push(item);
+            }
+            delete(item) {
+                let itemIndex = this._items.indexOf(item);
+                while (itemIndex > -1) {
+                    this._items.splice(itemIndex, 1);
+                    itemIndex = this._items.indexOf(item);
+                }
+            }
         }
 
         let group = Group.from([10, 20]);
@@ -15,7 +34,7 @@
         group.add(10);
         group.delete(10);
         console.log(group.has(10));
-// → false
+        // → false
 
 	</script>
 
@@ -23,9 +42,30 @@
 
 <body>
     <h1>Groups</h1>
-	Enter radius of the circle: <input id="number" size="5"/>
-
-	<button onclick="calculate()">Calculate</button>
+    <p>
+        The Group class allows to add or remove items with using methods,
+        it also contains the a static to create an instance of the class from an array or list of elements
+    </p>
+    <p>Please see the console for results, this code will be executed:</p>
+    <code>
+        let group = Group.from([10, 20]);
+        <br />
+        console.log(group.has(10));
+        <br />
+        // → true
+        <br />
+        console.log(group.has(30));
+        <br />
+        // → false
+        <br />
+        group.add(10);
+        <br />
+        group.delete(10);
+        <br />
+        console.log(group.has(10));
+        <br />
+        // → false
+    </code>
 	<br />
 	<hr />
 	<section id="result"></section>

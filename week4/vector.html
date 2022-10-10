@@ -3,30 +3,35 @@
 <head>
 	<title>Vector</title>
 	<script>
-		const circle = {
-			radius: 0,
-			calculatePerimeter(r) { return Math.PI * this.radius; },
-            calculateArea(r) { return Math.PI * Math.pow(this.radius, 2); }
 
-		};
+        class Vec {
+			constructor(x, y) {
+				this._x = x;
+				this._y = y;
+			}
+			get x() {
+				return this._x;
+            }
+            get y() {
+                return this._y;
+            }
+			plus(v) {
+				this._x += v.x;
+				this._y += v.y;
+				return this;
+			}
+            minus(v) {
+                this._x -= v.x;
+                this._y -= v.y;
+                return this;
+			}
+			get length() {
+                return Math.sqrt(Math.pow(this._x, 2) + Math.pow(this._y, 2))
+            }
+        }
 
-		function calculate() {
-			// getting number
-			let radius = document.getElementById("number").value;
-			// setting radius property
-			circle.radius = radius;
-			
-			// do calculations
-            const perimeter = circle.calculatePerimeter(radius);
-            const area = circle.calculateArea(radius);
-
-			// displaying result
-			var resultEl = document.getElementById("result");
-			resultEl.innerHTML = `Perimeter is ${perimeter.toFixed(2)}<br>Area is: ${area.toFixed(2)}`;
-		}
-
-        // Your code here.
-
+        // Testing classes.
+	
         console.log(new Vec(1, 2).plus(new Vec(2, 3)));
         // → Vec{x: 3, y: 5}
         console.log(new Vec(1, 2).minus(new Vec(2, 3)));
@@ -39,10 +44,22 @@
 </head>
 
 <body>
-	<h1>Circle Object</h1>
-	Enter radius of the circle: <input id="number" size="5"/>
+	<h1>Vector class (Vec)</h1>
+    <p>
+		Please see console for details, these are the operations it will perform:
+	</p>
+	<code>
+		console.log(new Vec(1, 2).plus(new Vec(2, 3)));
+		<br />
+		// → Vec{x: 3, y: 5}
+		<br />
+		console.log(new Vec(1, 2).minus(new Vec(2, 3)));
+		<br />
+		// → Vec{x: -1, y: -1}
+		<br />
+		console.log(new Vec(3, 4).length);
+	</code>
 
-	<button onclick="calculate()">Calculate</button>
 	<br />
 	<hr />
 	<section id="result"></section>
