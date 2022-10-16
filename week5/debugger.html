@@ -1,0 +1,41 @@
+﻿<!doctype html>
+<html>
+<head>
+	<title>Debugger</title>
+	<script>
+
+		function amIOldEnough(age) {
+			debugger;
+			if (age < 12) {
+				debugger;
+				return 'No, sorry.';
+			} else if (age < 18) {
+				debugger;
+				return 'Only if you are accompanied by an adult.';
+			} else {
+				debugger;
+				return 'Yep, come on in!';			}
+		}
+        // Testing .
+	
+        amIOldEnough(16);
+
+
+	</script>
+
+</head>
+
+<body>
+	<h1>Debugger</h1>
+    <p>
+		Please see console for details, debug process will take place where debugger keyword is used when calling the function below:
+	</p>
+	<code>
+		amIOldEnough(16);
+	</code>
+
+	<br />
+	<hr />
+	<section id="result"></section>
+</body>
+</html>

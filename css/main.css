@@ -1,3 +1,10 @@
 body {
 	font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif
 }
+.bold{
+	font-weight: bold;
+}
+p.code{
+	background-color: lightblue;
+	white-space:break-spaces;
+}

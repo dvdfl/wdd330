@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>WDD 330 - Week 5 - Notes</title>
+
+	<link rel="stylesheet" href="../css/main.css">
+
+</head>
+
+<body>
+    <h1>Week 5 - Notes</h1>
+
+    <h2>Notes:</h2>
+    <h3>Testing and Debugging</h3>
+    <p>
+        An <span class="bold">exception</span> is an error that produces a return value that can then be used by the
+        program to deal with the error. Example, trying to call a method that is nonexistent.
+        An exception will also produce a stack trace.
+    </p>
+    <p>
+        A <span class="bold">warning</span> can occur if there’s an error in the code that isn’t enough to cause the program to crash.
+        An example of a mistake that could cause a warning is assigning a value to a
+        variable that’s undeclared.
+    </p>
+    <p>
+        <span class="bold">Strict mode</span> that produces more exceptions and
+        warnings and prohibits the use of some deprecated features. Strict mode considers previously accepted "poor style" coding practices as actual errors.
+    </p>
+    <p>
+        Strict mode simply requires the following string to be added to the first line of a
+        JavaScript file:
+    </p>
+    <p class="code">
+        <code>
+            'use strict';
+        </code>
+    </p>
+    <p>
+        You can even use strict mode on a per-function basis by adding the line inside a
+        function. Strict mode will then only be applied to anything inside that function:
+    </p>
+    <p class="code">
+        <code>
+            function strictly(){
+            'use strict';
+            // function code goes here
+            }
+        </code>
+    </p>
+    <p>
+        In a self-invoking function. This technique will ensure that only your
+        code is forced to use strict mode.
+    </p>
+    <p class="code">
+        <code>
+            (function() {
+            'use strict';
+            // All your code would go inside this function
+            }());
+        </code>
+    </p>
+    <p>
+        A <span class="bold">console</span> object that provides a number of methods for logging information and debugging.
+    </p>
+    <ul>
+        <li>
+            console.log() s can be used to log the value of variables.
+        </li>
+        <li>
+            console.trace() will log an interactive stack trace in the console
+        </li>
+        <li>console.table()</li>
+    </ul>
+
+    <h4>Debugging Tools</h4>
+    <p>breakpoints in your code that will pause it at certain points</p>
+    <p>
+        The <code>debugger</code> keyword will create a breakpoint in your code that will pause the execution of the code
+    </p>
+
+    <p>
+        An error object can be created by the host environment when an exception occurs.
+    </p>
+    <p class="code">
+        <code>
+            const error = new Error();
+
+            const error = new Error('Oops, something went wrong');
+
+        </code>
+    </p>
+    <p>There are seven more error objects for specific errors:</p>
+    <ul>
+        <li>EvalError error using global eval() function.</li>
+        <li>RangeError is thrown when a number is outside an allowable range of values</li>
+        <li>ReferenceError is thrown when a reference is made to an item that doesn’t exist.</li>
+        <li>SyntaxError is thrown when there’s an error in the code’s syntax.</li>
+        <li>TypeError is thrown when there’s an error in the type of value used; for example, a string is used when a number is expected.</li>
+        <li>URIError is thrown when there’s a problem encoding or decoding the URI.</li>
+        <li> InternalError is a non-standard error that is thrown when an error occurs in the JavaScript engine. A common cause of this too much recursion.        </li>
+    </ul>
+    <h3>Throwing Exceptions</h3>
+    <p>
+        The throw statement can be applied to any JavaScript expression, causing the
+        execution of the program to stop
+    </p>
+    <p class="code">
+        <code>
+            throw 2;
+            throw 'Up';
+            throw { toys: 'out of pram' };
+            throw new Error('Something has gone badly wrong!'); // Best practice
+        </code>
+    </p>
+
+    <h3>
+        Exception Handling - try, catch, and finally
+    </h3>
+    <p>
+        The try block will run the code inside as normal, but if an exception
+        occurs it will pass the error object that is thrown onto a catch block.
+        The error object is automatically passed as a parameter to the catch block.
+        A finally block can be added after a catch block.
+    </p>
+    <h3>Tests</h3>
+    <p>
+        <span class="bold">Test-driven Development (TDD)</span> is the process of writing tests before any actual code.he following workflow:
+    </p>
+    <ol>
+        <li>Write tests (that initially fail)</li>
+        <li>Write code to pass the tests</li>
+        <li>Refactor the code</li>
+        <li>Test refactored code</li>
+        <li>Write more tests for new features</li>
+    </ol>
+    <p>Jest is a popular TDD framework </p>
+    <hr />
+    <h2>Exercises:</h2>
+    <ol>
+        <li><a href="team-activity/index.html">Team Activity</a></li>
+        <li><a href="debugger.html">Use of debugger keyword </a></li>
+        <!--<li><a href="groups.html">JavaScript List class that can be constructed using an array as parameter and has a static method</a></li>-->
+    </ol>
+    <hr />
+    <h2>Questions:</h2>
+
+    <ul>
+        <!--<li></li>-->
+    </ul>
+</body>
+</html>
