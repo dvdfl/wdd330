@@ -12,7 +12,7 @@ Helpers.qs('#addItemForm').addEventListener('submit', function (ev) {
     ev.stopPropagation();
     ev.preventDefault();
 })
-
+// Filter button handler
 const setSelection = (completed, buttonId) => {
     todos.filterList(completed);
     const button = Helpers.qs(buttonId);
@@ -21,7 +21,7 @@ const setSelection = (completed, buttonId) => {
     button.classList.add("selected")
 };
 
-// Adding handling for filters
+// Adding handlers for filter buttons
 Helpers.onTouch('#filterNone', () => setSelection(null, '#filterNone'))
 Helpers.onTouch('#filterActive', () => setSelection(false, '#filterActive'))
 Helpers.onTouch('#filterCompleted', () => setSelection(true, '#filterCompleted'))
