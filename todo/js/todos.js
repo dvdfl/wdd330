@@ -78,6 +78,7 @@ export default class Todos {
         task.completed = chbx.checked;
         // saving data
         this.saveTodo(null, TodosStorageKey);
+        this.listTodos();
     }
     /**
      * Removes Task from list
