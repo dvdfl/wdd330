@@ -1,0 +1,36 @@
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>To Do List</title>
+    <link href="css/main.css" rel="stylesheet" />
+    <script src="js/main.js" type="module" defer></script>
+</head>
+<body>
+    <div>
+        <header>
+            <h1 class="title">Todos</h1>
+        </header>
+        <main>
+            <ul id="mainList">
+            </ul>
+            <div class="list-footer">
+                <div>
+                <span id="TaskCount">0</span>
+                tasks left
+                </div>
+                <div>
+                    <button class="filter selected" id="filterNone">All</button>
+                    <button class="filter" id="filterActive">Active</button>
+                    <button class="filter" id="filterCompleted">Completed</button>
+                </div>
+            </div>
+        </main>
+        <footer>
+            <form id="addItemForm">
+                <input type="text" name="newItem" id="newItem" value="" /> 
+                <button type="submit" id="addItem">+</button>
+            </form>
+        </footer>
+    </div>
+</body>
+</html>

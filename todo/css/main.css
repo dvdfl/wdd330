@@ -1,0 +1,47 @@
+body {
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif
+}
+#addItemForm {
+    background-color: lightblue;
+    padding: 15px;
+    margin-top:10px;
+}
+h1.title{
+    text-align:center;
+    background-color:darkslategray;
+    color:white;
+}
+main{
+    min-height:73%;
+}
+#mainList{
+    padding: 5px;
+}
+#mainList li {
+    list-style: none;
+    padding:10px 0;
+    display:flex;
+    border-bottom: 1px dashed blue;
+}
+.list-footer{
+    background-color:lightgray;
+    padding:5px;
+    display:flex;
+    justify-content: space-between
+}
+.task-conent {
+    flex-grow: 1;
+}
+.task-conent input {
+    margin-right: 1em;
+    width: 1.5em;
+    height: 1.5em;
+}
+button.filter{
+    border: 1px solid gray;
+}
+button.selected {
+    border: 1px solid black;
+    font-weight: bold;
+    background-color:lightblue;
+}

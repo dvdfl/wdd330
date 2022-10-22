@@ -18,7 +18,11 @@ const links = [
 	{
 		label: "Week 5 notes",
 		url: "week5/index.html"
-	}
+	},
+	{
+		label: "Week 6 project - TODO App",
+		url: "todo/index.html"
+	},
 ]
 //async function fetchData(url,callback) {
 //	const response = await fetch(url);
