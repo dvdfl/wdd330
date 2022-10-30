@@ -23,6 +23,10 @@ const links = [
 		label: "Week 6 project - TODO App",
 		url: "todo/index.html"
 	},
+	{
+		label: "Week 7 notes",
+		url: "week7/index.html"
+	},
 ]
 //async function fetchData(url,callback) {
 //	const response = await fetch(url);

@@ -1,3 +1,4 @@
+import Comments from './comments.js';
 //create an array of hikes
 const hikeList = [
     {
@@ -90,12 +91,16 @@ function renderFullHike(hike, listId) {
             <h3>How to get there</h3>
             <p>${hike.directions}</p>
         </div>
+        <div id='submitComment'></div>
+        <div class='comments'>
+        </div>
     </li>
-    `
+    `;
 }
 export default class Hikes {
-    constructor(listId){
+    constructor(listId) {
         this._listId = listId;
+        this.comments = new Comments();
     }
     getAllHikes() {
         return hikeList;
@@ -111,6 +116,26 @@ export default class Hikes {
         backBtn.addEventListener('touchend', () => { this.showHikeList(); });
         return backBtn;
     }
+    createCommentButton(hikeName) {
+        const commentBtn = document.createElement("button");
+        commentBtn.textContent = "Add a Comment";
+        commentBtn.addEventListener('touchend', () => { this.createCommentForm(hikeName); });
+        return commentBtn;
+    }
+
+    createCommentForm(hikeName) {
+        const commentForm = `
+        
+          <label>
+            Your Comment about this hike
+            <input type="text" id="commentInput">
+          </label>
+          <button type='submit' id="submitBtn">Submit Form</button>
+        
+        `
+        document.getElementById('submitComment').innerHTML = commentForm;
+        document.getElementById('submitBtn').addEventListener('touchend', () => { this.comments.addComment('commentInput', hikeName) })
+    }
     showHikeDetails(item) {
         let hikeName = item.querySelector('h2').innerText;
         let hike = this.getHikeByName(hikeName);
@@ -118,7 +143,9 @@ export default class Hikes {
             const list = document.getElementById(this._listId)
             list.innerHTML = "";
             renderFullHike(hike, this._listId);
-            list.appendChild(this.createBackButton())
+            list.appendChild(this.createBackButton());
+            list.appendChild(this.createCommentButton(hike.name));
+            this.comments.renderCommentList(document.querySelector("#comments"), hike.name);
         }
     }
     showHikeList() {
@@ -127,5 +154,6 @@ export default class Hikes {
         listItems.forEach(item => {
             item.addEventListener('touchend', () => { this.showHikeDetails(item) })
         })
+        this.comments.renderCommentList(document.querySelector("#comments"));
     }
 }
