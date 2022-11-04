@@ -88,27 +88,89 @@
             });
         </code>
     </p>
-    <!--<p>
-        A <span class="bold">console</span> object that provides a number of methods for logging information and debugging.
-    </p>
-    <ul>
-        <li>
-            console.log() s can be used to log the value of variables.
-        </li>
-        <li>
-            console.trace() will log an interactive stack trace in the console
-        </li>
-        <li>console.table()</li>
-    </ul>
-
-    <h4>Debugging Tools</h4>
-    <p>breakpoints in your code that will pause it at certain points</p>
     <p>
-        The <code>debugger</code> keyword will create a breakpoint in your code that will pause the execution of the code
+        A <span class="bold">pure function </span> is a function that adheres to the following rules:
+          <ul>
+              <li>
+                  The return value of a pure function should only depend on the values
+                  provided as arguments. It doesn’t rely on values from somewhere else in the
+                  program
+              </li>
+              <li>
+                  There are no side-effects. A pure function doesn’t change any values or data
+                  elsewhere in the program. It only makes non-destructive data transformations and
+                  returns new values, rather than altering any of the underlying data.
+              </li>
+              <li>
+                  Referential transparency. Given the same arguments, a pure function will
+                  always return the same result.
+              </li>
+          </ul>
+    </p>
+    <p>
+       
+            Currying is a process that involves the partial application of functions.A function is said to be curried when not all arguments have been supplied to the
+            function, so it returns another function that retains the arguments already
+            provided, and expects the remaining arguments that were omitted when the
+            original function was called.
+            Currying relies on higher-order functions that are able to return partially applied
+            functions
+    </p>
+
+    <h4>Ajax</h4>
+    <p>
+        Ajax is a technique that allows web pages to communicate asynchronously with a
+        server, and it dynamically updates web pages without reloading.
+    </p>
+    <p>
+        The Fetch API provides a global fetch() method that only has one mandatory
+        argument, which is the URL of the resource you wish to fetch.
+    </p>
+    <p class="code"><code>
+    fetch('https://example.com/data')
+    .then( // code that handles the response )
+    .catch( // code that runs if the server returns an error )
+
+
+    fetch(url)
+    .then((response) => {
+        if(response.ok) {
+            return response;
+        }
+        throw Error(response.statusText);
+    })
+    .then( response => // do something with response )
+    .catch( error => console.log('There was an error!') )
+
+</code>
+    </p>
+    <p>
+        Some other properties of the Response object are:
+        <ul>
+            <li>
+                headers – A Headers object (see later section) containing any headers
+                associated with the response
+            </li>
+            <li>url – A string containing the URL of response</li>
+            <li>
+                redirected – A boolean value that specifies if the response is the result of a
+                redirect
+            </li>
+            <li>
+                type – A string value of “basic”, “cors”, “error” or “opaque”. A value of
+                “basic” is used for a response from the same domain.
+            </li>
+        </ul>
     </p>
 
     <p>
-        An error object can be created by the host environment when an exception occurs.
+        The response object also contains a number of methods that return promises that
+        can then be chained together
+    </p>
+    <p>
+        The <span class="bold">redirect()</span> method can be used to redirect to another URL. It creates a new
+        promise that resolves to the response from the redirected URL.
+
     </p>
     <p class="code">
         <code>
@@ -162,7 +224,7 @@
         <li>Test refactored code</li>
         <li>Write more tests for new features</li>
     </ol>
-    <p>Jest is a popular TDD framework </p>-->
+    <p>Jest is a popular TDD framework </p>
     <hr />
     <h2>Exercises:</h2>
     <ol>
