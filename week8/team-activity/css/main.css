@@ -1,0 +1,25 @@
+body{
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif
+}
+.header{
+    background-color: black;
+    color: white;
+    padding: 5px;
+    text-align: center;
+    text-shadow: 1px 1px 5px yellow;
+}
+.list {
+    border: 1px dashed navy;
+}
+.people-list{
+    padding: 10px;
+}
+.people-list > li {
+    padding: 0 10px 10px;
+    border-bottom: 1px dashed navy;
+    list-style: none;
+}
+.paging {
+    text-align: center;
+    margin-bottom: 10px;
+}
