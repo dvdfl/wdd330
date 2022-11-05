@@ -1,0 +1,256 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>WDD 330 - Week 8 - Notes</title>
+
+	<link rel="stylesheet" href="../css/main.css">
+
+</head>
+
+<body>
+    <h1>Week 8 - Notes</h1>
+
+    <h2>Notes:</h2>
+    <h3>CSS Transforms</h3>
+    <p>
+        The CSS3 Transform property lets you translate, rotate, scale, or skew any elements on the page.
+        The value of the <code>transform</code> property is one or more transform functions separated by spaces and will be applied in the same order they are provided.
+    </p>
+    <ul>
+        <li><span class="bold">Translation</span> function allows you to move elemnts by x from the left, and y from the top (alternatively you can use translatex(x) or translatey(y)): <code>translate(x, y)</code></li>
+        <li><span class="bold">Scaling</span> function scales the element by the defined factors horizontally<code>scale(x,y)</code> if only one value is provided it is used for x and y, fore reducing the element to half: <code>scale(.5)</code></li>
+        <li>The <span class="bold">Rotation</span> function rotates an element aroun the point of origin with positive degreesmoving clockwise, nevative can be used: <code>rotate(10deg)</code> </li>
+        <li><span class="bold">Skey</span> function specifies a skey along the X and Y axes, if the second parameter is omited, the skew only ocurs on X axis: <code>skew(10deg, 4deg)</code></li>
+    </ul>
+    <p>
+        To change the <span class="bold">origin of the transform</span> it has the same syntax as the <code>background-position</code> and defaults to the center of the object: <code>tranform-origin: 0 0;</code>
+    </p>
+    <h3>CSS Trasitions</h3>
+    <p>
+        Transitions allow to to change of the values of CSS properties over time providing animations. Likewise, you can animate any transforms. 
+        Here are the steps for a simple transition using only CSS
+        <ol>
+            <li>Declare original state of the element in the default style declaration.</li>
+            <li>Declare the final state of the transitioned element, for instance a hover state.</li>
+            <li>Include the transition functions in default style declaration using few different properties:
+                <ul>
+                    <li>transition-property: lists the CSS poperties that should be transitioned like: background, border and box model. <code>transition-property: transforms</code></li>
+                    <li>transition-duration: sets long the transition will take. it is specified in seconds: <code>transition-duration: 0.2s</code></li>
+                    <li>transition-timing-function: lets you control the pace of the transition in even more granular detail. Start off gast and end slower, or start off slow and get faster, key terms: ease, linear,ease-in, ease-out, or ease-in-out. </li>
+                    <li>transition-delay: it is to introduce a delay before the animation begins, instead as immediately as usually.Default is zero: <code>transition-delay: 200ms</code></li>
+                </ul>
+                It is possible to specify muiltiple transitions when using shorthand transition property, specify all the calues for each transition together, selarate each transiotion with commas: <code>transition: color 0.2s ease-out, transform 0.2s ease-out</code>
+            </li>
+        </ol>
+    </p>
+    <h3>Animations</h3>
+    <p>
+        Animations, unlike transitions, allow you to control eash steo of an animation via keyframes. The <span class="bold">@keyframes would look like this</span>
+    </p>
+    <p class="code">
+        <code>
+           @keyframes 'appear'{
+            0% {
+              opacity: 0;
+            }
+            100% {
+              opacity: 1;
+            }
+           }
+           @keyframes 'disappear'{
+            to {
+              opacity: 0;
+            }
+            from {
+              opacity: 1;
+            }
+           }
+           @keyframes 'appearDisappear'{
+            0%, 100% {
+              opacity: 0;
+            }
+            20%, 80% {
+              opacity: 1;
+            }
+           }
+        </code>
+
+    </p>
+    <p>
+        <ul>
+            <li>animation-name: is used to attach an animation to an element: <code>animation-name: 'appear';</code></li>
+            <li>animation-duration: this property defines the length of time, in seconds or miliseconds, an animation takes to complete one iteration (from 0% to 100%): <code>animation-duration: 300ms;</code></li>
+            <li>animation-timing-function: determines how the animation will progress over its duration. The options are the same as for transition-timing-function: ease-in, ease-out, ease-in-out, or cubic-bezier. <code>animation-timin-function: linear;</code></li>
+            <li>animation-iteration-count: this property lets ou define how many times the animation will play through, the value is generally an interger but it can also be decimal, if omited default is 1, <code>infinite</code> can be used: <code>animation-iteration-count: infinite;</code></li>
+            <li>animation-direction: you can use the value alternate to make every other iteration play the animation backwards: <code>animation-direction: alternate;</code></li>
+            <li>animation-delay: defines how many millicods or seconds to wait before the animation starts: <code>animation-delay: 15s;</code></li>
+            <li>animation-fill-mode: defines what happens before the animation begins and after an animaiton ends. We can tell the animation to sit and wait on the first keyframe until the animation starts, or stop on the last keyframe without reverting to the original values ath teh conclusion of the animation, or both. 
+                Available values are: 
+                <ul>
+                    <li>forwards: the animcation continues to apply the values of the last keyframes after the animation ends.</li>
+                    <li>backwards: animation's initial keyframes are applied as soon as the anymation style is applied to the element</li>
+                    <li>both: appplies both, backwards and forwards, effects.</li>
+                </ul>
+                The default value is none.</li>
+            <li>animation-play-state: defines whether the animation is running or paused. a pause animation displays the current state of the animation statically.</li>
+        </ul>
+    </p>
+    <p>
+        Shorthand animation property:
+    </p>
+    <p class="code">
+        <code>
+            .verbose{
+                animation-name: 'appear';
+                animation-duration: 300mx;
+                animation-timing-function: ease-in;
+                animation-iteration-count: 1;
+                animation-direction: alternate;
+                animation-delay: 5s;
+                animation-fill-mode: backwards;
+            }
+
+            /*shorthand*/
+            .concise{
+                animation: 'appear' 300 ms ease-in 1 alternate 5s backwards;
+            }
+            /*multiple animations*/
+            .concise{
+                animation: 
+                    'animationOne' 300 ms ease-in 1 alternate 5s backwards,
+                    'animationTwo' 150 ms ease-out 3 alternate 5s forwards;
+            }
+        </code>
+    </p>
+    <p>
+        <span class="bold">Call backs</span> are used to facilitate event-driven asynchronous programming.
+        The increase in the use of asynchronous programming in JavaScript has meant
+        that more and more callbacks are being used. This can result in messy and
+        confusing “spaghetti code”.
+    </p>
+    <p>
+        A <span class="bold">promise</span> represents the future result of an asynchronous operation, they don’t do anything that can’t already be achieved using callbacks, but they help
+        simplify the process, and avoid the convoluted code that can result from using multiple callbacks.
+        When a promise is created, it calls an asynchronous operation and is then said to be pending, the promise is said to be unsettled. Once the operation has completed, the
+        promise is said to have been settled. A settled promise can result in two different
+        outcomes:
+        <ul>
+            <li>Resolved ― the asynchronous operation was completed successfully.</li>
+            <li>Rejected ― the asynchronous operation didn’t work as expected, wasn’t successfully completed or resulted in an error.</li>
+        </ul>
+        The general layout of a promise is
+    </p>
+    <p class="code">
+        <code>
+            const promise = new Promise( (resolve, reject) => {
+            // initialization code goes here
+            if (success) {
+            resolve(value);
+            } else {
+            reject(error);
+            }
+            }
+            });
+        </code>
+    </p>
+    <p>
+        A <span class="bold">pure function </span> is a function that adheres to the following rules:
+        <ul>
+            <li>
+                The return value of a pure function should only depend on the values
+                provided as arguments. It doesn’t rely on values from somewhere else in the
+                program
+            </li>
+            <li>
+                There are no side-effects. A pure function doesn’t change any values or data
+                elsewhere in the program. It only makes non-destructive data transformations and
+                returns new values, rather than altering any of the underlying data.
+            </li>
+            <li>
+                Referential transparency. Given the same arguments, a pure function will
+                always return the same result.
+            </li>
+        </ul>
+    </p>
+    <p>
+
+        Currying is a process that involves the partial application of functions.A function is said to be curried when not all arguments have been supplied to the
+        function, so it returns another function that retains the arguments already
+        provided, and expects the remaining arguments that were omitted when the
+        original function was called.
+        Currying relies on higher-order functions that are able to return partially applied
+        functions
+    </p>
+
+    <h4>Ajax</h4>
+    <p>
+        Ajax is a technique that allows web pages to communicate asynchronously with a
+        server, and it dynamically updates web pages without reloading.
+    </p>
+    <p>
+        The Fetch API provides a global fetch() method that only has one mandatory
+        argument, which is the URL of the resource you wish to fetch.
+    </p>
+    <p class="code">
+        <code>
+            fetch('https://example.com/data')
+            .then( // code that handles the response )
+            .catch( // code that runs if the server returns an error )
+
+
+            fetch(url)
+            .then((response) => {
+            if(response.ok) {
+            return response;
+            }
+            throw Error(response.statusText);
+            })
+            .then( response => // do something with response )
+            .catch( error => console.log('There was an error!') )
+
+        </code>
+    </p>
+    <p>
+        Some other properties of the Response object are:
+        <ul>
+            <li>
+                headers – A Headers object (see later section) containing any headers
+                associated with the response
+            </li>
+            <li>url – A string containing the URL of response</li>
+            <li>
+                redirected – A boolean value that specifies if the response is the result of a
+                redirect
+            </li>
+            <li>
+                type – A string value of “basic”, “cors”, “error” or “opaque”. A value of
+                “basic” is used for a response from the same domain.
+            </li>
+        </ul>
+    </p>
+
+    <p>
+        The response object also contains a number of methods that return promises that
+        can then be chained together
+    </p>
+    <p>
+        The <span class="bold">redirect()</span> method can be used to redirect to another URL. It creates a new
+        promise that resolves to the response from the redirected URL.
+
+    </p>
+   
+    <hr />
+    <h2>Exercises:</h2>
+    <ol>
+        <li><a href="../team-activity/index.html">Team Activity</a></li>
+        <li><a href="canvas.html">Canvas</a></li>
+        <!--<li><a href="groups.html">JavaScript List class that can be constructed using an array as parameter and has a static method</a></li>-->
+    </ol>
+    <hr />
+    <h2>Questions:</h2>
+
+    <ul>
+        <!--<li></li>-->
+    </ul>
+</body>
+</html>

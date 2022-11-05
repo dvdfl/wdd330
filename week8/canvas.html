@@ -1,0 +1,58 @@
+﻿<!doctype html>
+<html>
+<head>
+    <title>Canvas</title>
+    <style>
+        #myCanvas {
+            border: 1px solid gray;
+        }
+    </style>
+
+</head>
+
+<body>
+    <h1>Canvas</h1>
+    <p>
+        Drawing some fiures usign canvas method
+    </p>
+    <!--<code>
+        amIOldEnough(16);
+    </code>-->
+    <canvas id="myCanvas" width="200" height="200"></canvas>
+    <br />
+    <hr />
+    <section id="result"></section>
+</body>
+<script>
+
+    function draw() {
+        let canvas = document.getElementById("myCanvas");
+        let context = canvas.getContext("2d")
+        context.strokeStyle = "red";
+        //context.fillStyle = "blue";
+        //context.fillStyle = "rgba(0,0,255,0.5)";
+        const gradient = context.createLinearGradient(0, 0, 0, 200);
+        gradient.addColorStop(0, "blue");
+        gradient.addColorStop(1, "white");
+        context.fillStyle = gradient;
+
+        context.fillRect(10, 10, 100, 100);
+        context.strokeRect(10, 10, 100, 100);
+
+        //draw circle
+        context.beginPath();
+        context.arc(150, 150, 30, 0, Math.PI * 2, true);
+        context.closePath();
+        context.strokeStyle = "red";
+        context.fillStyle = "green";
+        context.lineWidth = 3;
+        context.fill();
+        context.stroke();
+    }
+    
+
+    draw();
+
+
+</script>
+</html>
