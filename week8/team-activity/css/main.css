@@ -1,12 +1,27 @@
 body{
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif
 }
-.header{
+.header {
     background-color: black;
     color: white;
     padding: 5px;
     text-align: center;
     text-shadow: 1px 1px 5px yellow;
+}
+
+.header h1 {
+    animation: fadeInOut 5s infinite;
+}
+@keyframes fadeInOut {
+    0% {
+        opacity: .5;
+    }
+    50% {
+        opacity: 1;
+    }
+    100% {
+        opacity: .5;
+    }
 }
 .list {
     border: 1px dashed navy;
