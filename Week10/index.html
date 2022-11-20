@@ -1,0 +1,107 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>WDD 330 - Week 10 - Notes</title>
+
+	<link rel="stylesheet" href="../css/main.css">
+
+</head>
+
+<body>
+    <h1>Week 10 - Notes</h1>
+
+    <h2>Notes:</h2>
+    <h3>Validating Forms</h3>
+    <p>
+        When you enter data data in a web form, the browser and/or the web server will check to see that the data is in the correct format and within the constraints set by the application.
+        Form Validation done by the browser is called client-side validation. There exist two different types of client-side validation:
+        <ul>
+            <li><span class="bold">Build-in</span> - uses HTML from validation features, javascript requirements can be minimum. It may also be limited.</li>
+            <li><span class="bold">Javascript</span> - Fulli customizable requires javascript coding or use of a library.</li>
+        </ul>
+    </p>
+    <p>
+        Some methods of the window object are dialogs:
+    </p>
+    <ul>
+        <li><span class="bold"> alert() </span> function will stop program executio and display a provided message in a dialog box, this methods returns <code>undefined</code>. Example: <code>alert("Hello world")</code></li>
+        <li><span class="bold">confirm()</span> function also will stop program execution and display a confirmation dialog with a provided mesasge and the OK or cancel options, ir returns true if OK is selected or false when Cancel is chosen<code>let go = confirm("De you want to continue?");</code> </li>
+        <li>The <span class="bold">prompt().</span> function stops execution of the program and displays a message provided also an input field for the user to enter text. When the OK button is clicked it will return the value of the input as string, if cancel is clicked then <code>null</code> will be returned: <code>let userInput = prompt("Please enter a your name:")</code> </li>
+    </ul>
+    <p>
+        Browser informatioon can also be obtained through the window object <code>window.navigator</code>. And information about the URL can be obtained using <code>window.location</code> like protoco, hostname, path, port and search (query string).
+    </p>
+    <p>
+        Browser history can be also be accessed and navigted:
+    </p>
+    <p class="code">
+        <code>
+            window.history.length; // shows how many pages have been visited
+            window.history.go(1); // goes forward 1 page
+            window.history.go(0); // reloads the current page
+            window.history.go(-1); // goes back 1 page
+
+        </code>
+    </p>
+
+    <h3>Using Fetch</h3>
+    <p>
+        The Fetch API provides a global fetch() method that only has one mandatory
+        argument, which is the URL of the resource you wish to fetch.
+    </p>
+    <p class="code">
+        <code>
+            fetch('https://example.com/data')
+            .then( // code that handles the response )
+            .catch( // code that runs if the server returns an error )
+
+
+            fetch(url)
+            .then((response) => {
+            if(response.ok) {
+            return response;
+            }
+            throw Error(response.statusText);
+            })
+            .then( response => // do something with response )
+            .catch( error => console.log('There was an error!') )
+
+        </code>
+    </p>
+    <p>
+        Some other properties of the Response object are:
+        <ul>
+            <li>
+                headers – A Headers object (see later section) containing any headers
+                associated with the response
+            </li>
+            <li>url – A string containing the URL of response</li>
+            <li>
+                redirected – A boolean value that specifies if the response is the result of a
+                redirect
+            </li>
+            <li>
+                type – A string value of “basic”, “cors”, “error” or “opaque”. A value of
+                “basic” is used for a response from the same domain.
+            </li>
+        </ul>
+    </p>
+
+    <p>
+
+    </p>
+
+    <hr />
+    <h2>Exercises:</h2>
+    <ol>
+        <li><a href="team-activity/index.html">Team Activity</a></li>
+        <!--<li><a href="canvas.html">Canvas</a></li>-->
+    </ol>
+    <hr />
+    <h2>Questions:</h2>
+
+    <ul>
+        <!--<li></li>-->
+    </ul>
+</body>
+</html>
