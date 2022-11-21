@@ -14,15 +14,27 @@
     <h3>Validating Forms</h3>
     <p>
         When you enter data data in a web form, the browser and/or the web server will check to see that the data is in the correct format and within the constraints set by the application.
-        Form Validation done by the browser is called client-side validation. There exist two different types of client-side validation:
+        Form Validation done by the browser is called client-side validation. There exists two different types of client-side validation:
         <ul>
             <li><span class="bold">Build-in</span> - uses HTML from validation features, javascript requirements can be minimum. It may also be limited.</li>
             <li><span class="bold">Javascript</span> - Fulli customizable requires javascript coding or use of a library.</li>
         </ul>
     </p>
-    <!--p>
-        Some methods of the window object are dialogs:
-    </!--p>
+    <p>
+        Built-in validations can be defined setting attributes on the form elements, some examples:
+        <ul>
+            <li>
+                The <span class="bold">required</span> attribute specifies a form field needs to be filled in before the form can be submitted.
+            </li>
+            <li>
+                The <span class="bold">minlength</span> and <span class="bold">maxlength</span> attributes set the minimum and maximum length of the text value.
+            </li>
+            <li><span class="bold">min</span> and <span class="bold">max</span> attributes set the limits for a numeric integer values.
+            </li>
+            <li>The <span class="bold">type</span> attribute defines what time of data to be entered, likea number or email address.</li>
+            <li><span class="bold">pattern</span> attribute is to set a regular expression to define the pattern of the entered value</li>
+        </ul>
+    </p>
     <ul>
         <li><span class="bold"> alert() </span> function will stop program executio and display a provided message in a dialog box, this methods returns <code>undefined</code>. Example: <code>alert("Hello world")</code></li>
         <li><span class="bold">confirm()</span> function also will stop program execution and display a confirmation dialog with a provided mesasge and the OK or cancel options, ir returns true if OK is selected or false when Cancel is chosen<code>let go = confirm("De you want to continue?");</code> </li>
