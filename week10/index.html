@@ -29,42 +29,156 @@
             <li>
                 The <span class="bold">minlength</span> and <span class="bold">maxlength</span> attributes set the minimum and maximum length of the text value.
             </li>
-            <li><span class="bold">min</span> and <span class="bold">max</span> attributes set the limits for a numeric integer values.
+            <li>
+                <span class="bold">min</span> and <span class="bold">max</span> attributes set the limits for a numeric integer values.
             </li>
             <li>The <span class="bold">type</span> attribute defines what time of data to be entered, likea number or email address.</li>
             <li><span class="bold">pattern</span> attribute is to set a regular expression to define the pattern of the entered value</li>
         </ul>
     </p>
-    <ul>
-        <li><span class="bold"> alert() </span> function will stop program executio and display a provided message in a dialog box, this methods returns <code>undefined</code>. Example: <code>alert("Hello world")</code></li>
-        <li><span class="bold">confirm()</span> function also will stop program execution and display a confirmation dialog with a provided mesasge and the OK or cancel options, ir returns true if OK is selected or false when Cancel is chosen<code>let go = confirm("De you want to continue?");</code> </li>
-        <li>The <span class="bold">prompt().</span> function stops execution of the program and displays a message provided also an input field for the user to enter text. When the OK button is clicked it will return the value of the input as string, if cancel is clicked then <code>null</code> will be returned: <code>let userInput = prompt("Please enter a your name:")</code> </li>
-    </ul>
-    <p>
-        Browser informatioon can also be obtained through the window object <code>window.navigator</code>. And information about the URL can be obtained using <code>window.location</code> like protoco, hostname, path, port and search (query string).
-    </p>
-    <p>
-        Browser history can be also be accessed and navigted:
-    </p>
     <p class="code">
         <code>
-            window.history.length; // shows how many pages have been visited
-            window.history.go(1); // goes forward 1 page
-            window.history.go(0); // reloads the current page
-            window.history.go(-1); // goes back 1 page
+            &lt;form>
+                &lt;p>
+                    &lt;fieldset>
+                        &lt;legend>Do you have a driver's license?&lt;span aria-label="required">*&lt;/span>&lt;/legend>
+                        &lt;!-- While only one radio button in a same-named group can be selected at a time,
+                     and therefore only one radio button in a same-named group having the "required"
+                     attribute suffices in making a selection a requirement -->
+                        &lt;input type="radio" required name="driver" id="r1" value="yes">&lt;label for="r1">Yes&lt;/label>
+                        &lt;input type="radio" required name="driver" id="r2" value="no">&lt;label for="r2">No&lt;/label>
+                    &lt;/fieldset>
+                &lt;/p>
+                &lt;p>
+                    &lt;label for="n1">How old are you?&lt;/label>
+                    &lt;!-- The pattern attribute can act as a fallback for browsers which
+                 don't implement the number input type but support the pattern attribute.
+                 Please note that browsers that support the pattern attribute will make it
+                 fail silently when used with a number field.
+                 Its usage here acts only as a fallback -->
+                    &lt;input type="number" min="12" max="120" step="1" id="n1" name="age"
+                           pattern="\d+">
+                &lt;/p>
+                &lt;p>
+                    &lt;label for="t1">What's your favorite fruit?&lt;span aria-label="required">*&lt;/span>&lt;/label>
+                    &lt;input type="text" id="t1" name="fruit" list="l1" required
+                           pattern="[Bb]anana|[Cc]herry|[Aa]pple|[Ss]trawberry|[Ll]emon|[Oo]range">
+                    &lt;datalist id="l1">
+                        &lt;option>Banana&lt;/option>
+                        &lt;option>Cherry&lt;/option>
+                        &lt;option>Apple&lt;/option>
+                        &lt;option>Strawberry&lt;/option>
+                        &lt;option>Lemon&lt;/option>
+                        &lt;option>Orange&lt;/option>
+                    &lt;/datalist>
+                &lt;/p>
+                &lt;p>
+                    &lt;label for="t2">What's your e-mail address?&lt;/label>
+                    &lt;input type="email" id="t2" name="email">
+                &lt;/p>
+                &lt;p>
+                    &lt;label for="t3">Leave a short message&lt;/label>
+                    &lt;textarea id="t3" name="msg" maxlength="140" rows="5">&lt;/textarea>
+                &lt;/p>
+                &lt;p>
+                    &lt;button>Submit&lt;/button>
+                &lt;/p>
+            &lt;/form>
 
         </code>
-    <p-->
-    <h3>Using Fetch</h3>
     <p>
-        The Fetch API provides a global fetch() method that only has one mandatory
-        argument, which is the URL of the resource you wish to fetch.
+
+    <p>
+        Another part of the buil-in functionality is the pseudo-classes for validation
+    </p>
+    <ul>
+        <li><span class="bold"> :valid </span> pseudo class matches when the element is valid</li>
+        <li><span class="bold"> :invalid</span> pseudo class is for matching error containing elements</li>
+    </ul>
+    <h4>Validating with JavaScript</h4>
+    <p>
+        Most browsers support the Constraint Validation API, which consists of a set of methods and properties available on the following form element DOM interfaces:
+        <ul>
+            <li>HTMLButtonElement (represents a &lt;button> element)</li>
+            <li>HTMLFieldSetElement (represents a &lt;fieldset> element)</li>
+            <li>HTMLInputElement (represents an &lt;input> element)</li>
+            <li>HTMLOutputElement (represents an &lt;output> element)</li>
+            <li>HTMLSelectElement (represents a &lt;select> element)</li>
+            <li>HTMLTextAreaElement (represents a &lt;textarea> element)</li>
+        </ul>
+    </p>
+    <p>
+        The Constraint validation API makes the following properties available on the above elements
+        <ul>
+            <li>validationMessage: Returns a localized message describing the validation constraints that the control doesn't satisfy (if any). If the control is not a candidate for constraint validation (willValidate is false) or the element's value satisfies its constraints (is valid), this will return an empty string.</li>
+            <li>validity: Returns a ValidityState object that contains several properties describing the validity state of the element. You can find full details of all the available properties in the ValidityState reference page; below is listed a few of the more common ones: 
+                <ul>
+                    <li>patternMismatch: Returns true if the value does not match the specified pattern, and false if it does match. If true, the element matches the :invalid CSS pseudo-class.</li>
+                    <li>tooLong: Returns true if the value is longer than the maximum length specified by the maxlength attribute, or false if it is shorter than or equal to the maximum. If true, the element matches the :invalid CSS pseudo-class.</li>
+                    <li>tooShort: Returns true if the value is shorter than the minimum length specified by the minlength attribute, or false if it is greater than or equal to the minimum. If true, the element matches the :invalid CSS pseudo-class.</li>
+                    <li>rangeOverflow: Returns true if the value is greater than the maximum specified by the max attribute, or false if it is less than or equal to the maximum. If true, the element matches the :invalid and :out-of-range CSS pseudo-classes.</li>
+                    <li>rangeUnderflow: Returns true if the value is less than the minimum specified by the min attribute, or false if it is greater than or equal to the minimum. If true, the element matches the :invalid and :out-of-range CSS pseudo-classes.</li>
+                    <li>typeMismatch: Returns true if the value is not in the required syntax (when type is email or url), or false if the syntax is correct. If true, the element matches the :invalid CSS pseudo-class.</li>
+                    <li>valid: Returns true if the element meets all its validation constraints, and is therefore considered to be valid, or false if it fails any constraint. If true, the element matches the :valid CSS pseudo-class; the :invalid CSS pseudo-class otherwise.</li>
+                    <li>valueMissing: Returns true if the element has a required attribute, but no value, or false otherwise. If true, the element matches the :invalid CSS pseudo-class.</li>
+                </ul>
+            </li>
+            <li>willValidate: Returns true if the element will be validated when the form is submitted; false otherwise.</li>
+        </ul>
     </p>
     <p class="code">
         <code>
-            fetch('https://example.com/data')
-            .then( // code that handles the response )
-            .catch( // code that runs if the server returns an error )
+            // HTML
+            &lt;form>
+            &lt;label for="mail">
+            I would like you to provide me with an e-mail address:
+            &lt;/label>
+            &lt;input type="email" id="mail" name="mail" />
+            &lt;button>Submit&lt;/button>
+            &lt;/form>
+            
+            // JavaSCript
+            const email = document.getElementById("mail");
+
+            email.addEventListener("input", (event) => {
+            if (email.validity.typeMismatch) {
+                email.setCustomValidity("I am expecting an e-mail address!");
+                email.reportValidity();
+            } else {
+                email.setCustomValidity("");
+            }
+            });
+
+        </code>
+    </p>
+    <h3>Fetch API</h3>
+    <p>
+        The Fetch API provides a JavaScript interface for accessing and manipulating parts of the protocol, such as requests and responses. 
+        It also provides a global fetch() method that provides an easy, logical way to fetch resources asynchronously across the network.
+    </p>
+    <p>
+        The Promise returned from fetch() won't reject on HTTP error status even if the response is an HTTP 404 or 500. Instead, as soon as the server responds with headers, the Promise will resolve normally (with the ok property of the response set to false if the response isn't in the range 200–299), and it will only reject on network failure or if anything prevented the request from completing.
+        Unless fetch() is called with the credentials option set to include, fetch():
+        <ul>
+            <li>won't send cookies in cross-origin requests</li>
+            <li>won't set any cookies sent back in cross-origin responses</li>
+            <li>As of August 2018, the default credentials policy changed to same-origin. Firefox was also modified in version 61.0b13)</li>
+        </ul>
+        
+        
+        
+
+    </p>
+    <p class="code">
+        <code>
+            fetch('http://example.com/movies.json')
+            .then((response) => response.json())
+            .then((data) => console.log(data));
+
+            // with credentials
+            fetch('https://example.com', {
+            credentials: 'include'
+            });
 
 
             fetch(url)
@@ -76,6 +190,24 @@
             })
             .then( response => // do something with response )
             .catch( error => console.log('There was an error!') )
+
+            // Uploading data
+            const data = { username: 'example' };
+
+            fetch('https://example.com/profile', {
+                method: 'POST', // or 'PUT'
+                headers: {
+                'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(data),
+            })
+            .then((response) => response.json())
+            .then((data) => {
+                console.log('Success:', data);
+                })
+                .catch((error) => {
+                console.error('Error:', error);
+                });
 
         </code>
     </p>
