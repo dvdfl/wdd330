@@ -39,6 +39,10 @@ const links = [
 		label: "Week 10 notes",
 		url: "week10/index.html"
 	},
+	{
+		label: "Weather App - Project",
+		url: "weather/"
+	}
 ]
 //async function fetchData(url,callback) {
 //	const response = await fetch(url);

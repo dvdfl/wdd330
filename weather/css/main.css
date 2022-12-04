@@ -1,0 +1,28 @@
+body{
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif ;
+}
+header nav{
+    background-color: darkblue;
+}
+header nav ul{
+    display: flex;
+}
+header nav li {
+    list-style: none;
+    padding: 5px 10px;
+}
+header nav li,
+header nav li a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+}
+#locationsList {
+    padding: 0;
+}
+#locationsList li {
+    list-style: none;
+}
+li.location {
+    display: flex
+}
