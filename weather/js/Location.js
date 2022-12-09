@@ -27,7 +27,7 @@ export default class Location {
     getLocations() {
         let storedList = Storage.getData(TodosStorageKey);
         if (!storedList) {
-            this.locationsList = [];
+            storedList = [];
             //this.saveLocationsList(
             //    {
             //    "localid": new Date().getTime(),
