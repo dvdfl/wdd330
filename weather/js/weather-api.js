@@ -1,5 +1,5 @@
 const url = "https://api.openweathermap.org/data/2.5/weather?";
-const geoUrl = "http://api.openweathermap.org/geo/1.0/direct?";
+const geoUrl = "https://api.openweathermap.org/geo/1.0/direct?";
 const ak = "e3cf141a197ad7d8f55f34115bd5bcd5";
 
 export default class WeatherApi {
