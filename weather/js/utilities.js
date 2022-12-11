@@ -6,6 +6,9 @@ export default class Helpers {
     static onTouch(elementSelector, callback) {
         this.qs(elementSelector).addEventListener('touchend', callback);
     }
+    static onClick(elementSelector, callback) {
+        this.qs(elementSelector).addEventListener('click', callback);
+    }
 
     static onTouchEl(element, callback) {
         element.addEventListener('touchend', () => { callback() });

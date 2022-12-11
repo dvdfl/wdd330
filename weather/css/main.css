@@ -1,8 +1,12 @@
-body{
-    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif ;
+:root{
+
 }
-header nav{
-    background-color: darkblue;
+body {
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    background-color: #E1E5F2;
+}
+header nav {
+    background-color: #022B3A;
 }
 header nav ul{
     display: flex;
@@ -21,8 +25,14 @@ header nav li a {
     padding: 0;
     margin: 0;
 }
-#locationsList li {
+#locationsList>li {
+    margin: 15px 0;
     list-style: none;
+    background-color: white;
+    border-radius: 10px;
+    /*border: 3px outset #1F7A8C;*/
+    box-shadow: 0 0 .5rem #1F7A8C;
+    /*border-bottom: 3px outset #022B3A;*/
 }
 li.location {
     display: flex;
@@ -32,15 +42,13 @@ li.location {
 li.location>div{
     flex: 0 1 auto;
 }
-@keyframes appear {
-    0% {
-        opacity: 0;
-    }
-    100% {
-        opacity: 1;
-    }
-}
+
 .add-location {
+    padding: 1px 10px 10px;
+    background-color: #ccdbdc;
+    display: none;
+}
+.settings {
     background-color: whitesmoke;
     display: none;
 }
@@ -54,7 +62,7 @@ ul.details li{
 }
 
 button {
-    background-color: lightgray;
+    background-color: #BFDBF7;
     color: black;
     border: 1px solid gray;
     border-radius: 4px;
@@ -63,15 +71,43 @@ button {
     font-size: 1em;
 }
 .mainbtn {
-    background-color: royalblue;
+    background-color: #1F7A8C;
+    color: white;
+}
+.deletebtn {
+    background-color: darkred;
+    padding: .2em .5em;
     color: white;
 }
 input {
-    display:block;
+    display: block;
     font-size: 1.1em;
     width: 90%;
     padding: .5em;
     /*max-width: 25em;*/
     margin-top: 5px;
     background-color: #e1e1e1;
+}
+.item-baseline {
+    align-self: baseline;
+}
+/*== animations ==*/
+@keyframes appear {
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
+@keyframes disappear {
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
 }

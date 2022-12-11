@@ -33,11 +33,9 @@ export default
     }
     /**
      **/
-    addLocation() {
-        // new task textbox element
-        const newContentTbx = Helpers.qs('#NewLocation');
+    async addLocation(input) {
         // textbox value
-        const newLocationName = newContentTbx.value;
+        const newLocationName = input.value;
         // if empty exit function
         if (!newLocationName.trim()) {
             return;
@@ -47,6 +45,7 @@ export default
             resp => {
                 console.log(resp);
                 if (resp.length == 1) {
+                    input.value = "";
                     //console.log("will store it")
                     const newLocation = {
                         "localid": new Date().getTime(),
@@ -85,7 +84,9 @@ export default
         })
     }
 
-    removeLocation(loc) {
+    removeLocation(ev, loc) {
+        ev.stopPropagation();
+        ev.preventDefault();
         console.log("removeLocation" + loc)
         // fiding task in list
         const task = this._locationsList.find(l => l.id === loc.id)
@@ -97,11 +98,15 @@ export default
         this.listLocations();
     }
 
-    showLocationDetail(loc) {
+    showLocationDetail(ev, loc) {
+        ev.stopPropagation();
+        ev.preventDefault();
         this._locationsView.showDetail(loc, this.backToList.bind(this));
     }
 
-    backToList() {
+    backToList(ev) {
+        ev.stopPropagation();
+        ev.preventDefault();
         this.listLocations();
     }
 }

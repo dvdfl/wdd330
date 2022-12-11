@@ -72,19 +72,9 @@ export default class Location {
         this.listLocations();
     }
     /**
-     * Removes Task from list
-     * @param {any} taskId
+     * Fetches data from API for a location
+     * @param {Location} location
      */
-    removeTodo(taskId) {
-        // fiding task in list
-        const task = this.locationsList.find(task => task.id === taskId)
-        // removing item from list
-        this.locationsList.splice(this.locationsList.indexOf(task), 1)
-        //Saving data
-        this.saveLocationsList(null, TodosStorageKey);
-        //updating UI
-        this.listLocations();
-    }
     async fetchLocation(loc) {
         return new Promise((resolve, reject) => {
             this._api.fetchLocation(loc.name + "," + loc.country).then(res => {
