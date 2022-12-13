@@ -29,7 +29,7 @@
                 <button type="button" class="optionbtn" id="ShowAddBtn">➕</button>
                 <button type="button" class="optionbtn" id="ShowSettings">⚙</button>
             </div>
-            <section class="settings">
+            <section class="panel" id="settings">
                 <h2>Settings</h2>
                 <h3>Units</h3>
                 <p>
@@ -49,14 +49,20 @@
                         </select>
                     </label>
                 </p>
-                <button type="button" class="mainbtn" id="SaveSettingsBtn">Save</button>
-                <button type="button" id="CancelSettingsBtn">Cancel</button>
+                <p>
+                    <button type="button" class="mainbtn" id="SaveSettingsBtn">Save</button>
+                    <button type="button" id="CancelSettingsBtn">Cancel</button>
+                </p>
             </section>
-            <section class="add-location">
+            <section class="panel" id="addLocation">
                 <h2>Add Location</h2>
-                <input type="text" name="NewLocation" id="NewLocation" value="" placeholder="City, State, Contry" />
-                <button type="button" class="mainbtn" id="AddLocationBtn">Add</button>
-                <button type="button" id="CancelLocationBtn">Cancel</button>
+                <p>
+                    <input type="text" name="NewLocation" id="NewLocation" value="" placeholder="City, State, Contry" />
+                </p>
+                <p>
+                    <button type="button" class="mainbtn" id="AddLocationBtn">Add</button>
+                    <button type="button" id="CancelLocationBtn">Cancel</button>
+                </p>
             </section>
             <ul id="locationsList"></ul>
         </main>

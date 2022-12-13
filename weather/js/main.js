@@ -5,38 +5,41 @@ import Helpers from './utilities.js';
 const controller = new WeatherController('locationsList');
 controller.init();
 
+// Panels
+const addLocationPnl = document.querySelector("#addLocation");
+const settingsPnl = document.querySelector("#settings");
+
 Helpers.onClick("#AddLocationBtn", (ev) => {
     ev.stopPropagation();
-    console.log(Helpers.qs("#NewLocation"))
-    controller.addLocation(Helpers.qs("#NewLocation"));
+    //console.log(Helpers.qs("#NewLocation"))
+    controller.addLocation(Helpers.qs("#NewLocation"), addLocationPnl);
 });
 
 Helpers.onClick("#SaveSettingsBtn", (ev) => {
     ev.stopPropagation();
     controller.saveSettings(Helpers.qs("#metricUnits"), Helpers.qs("#refreshRate"));
-    document.querySelector(".settings").classList.remove("show");
-});
-
-Helpers.onClick("#CancelLocationBtn", (ev) => {
-    ev.stopPropagation();
-    document.querySelector(".add-location").classList.remove("show");
-    //Helpers.qs("#ShowAddBtn").style.display = "";
+    settingsPnl.classList.remove("show");
 });
 
 Helpers.onClick("#ShowAddBtn", (ev) => {
     ev.stopPropagation();
-    document.querySelector(".add-location").classList.add("show");
-    document.querySelector(".settings").classList.remove("show");
-});
-
-Helpers.onClick("#CancelSettingsBtn", (ev) => {
-    ev.stopPropagation();
-    document.querySelector(".settings").classList.remove("show");
-    //Helpers.qs("#ShowAddBtn").style.display = "";
+    addLocationPnl.classList.toggle("show");
+    settingsPnl.classList.remove("show");
 });
 
 Helpers.onClick("#ShowSettings", (ev) => {
     ev.stopPropagation();
-    document.querySelector(".settings").classList.add("show");
-    document.querySelector(".add-location").classList.remove("show");
+    settingsPnl.classList.toggle("show");
+    addLocationPnl.classList.remove("show");
 });
+
+Helpers.onClick("#CancelLocationBtn", (ev) => {
+    ev.stopPropagation();
+    addLocationPnl.classList.remove("show");
+});
+
+Helpers.onClick("#CancelSettingsBtn", (ev) => {
+    ev.stopPropagation();
+    settingsPnl.classList.remove("show");
+});
+
