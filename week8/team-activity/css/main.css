@@ -10,7 +10,7 @@ body{
 }
 
 .header h1 {
-    animation: fadeInOut 5s infinite;
+    animation: fadeInOut 3s infinite;
 }
 @keyframes fadeInOut {
     0% {
