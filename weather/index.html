@@ -11,27 +11,36 @@
 <body>
     <div class="wrapper">
         <header>
-            <h1>Weather</h1>
-            <nav>
-                <ul>
-                    <li><a href="./" title="Home Page">Home</a></li>
-                    <li>Settings</li>
-                    <li>About</li>
-                </ul>
-            </nav>
+            <div class="header-top">
+                <h1 class="title">🌤 My Weather</h1>
+                <!--<a href="#" class="menu" id="MenuBtn" title="Show/Hide Menu">☰</a>-->
+            </div>
+            <!--<nav id="mainnav">
+                <ul>-->
+                    <!--<li><a href="./" title="Home Page">Home</a></li>-->
+                    <!--<li>Add Location</li>
+                    <li>Settings</li>-->
+                    <!--<li>☴</li>-->
+                <!--</ul>
+            </nav>-->
         </header>
         <main>
+            <div class="options">
+                <button type="button" class="optionbtn" id="ShowAddBtn">➕</button>
+                <button type="button" class="optionbtn" id="ShowSettings">⚙</button>
+            </div>
             <section class="settings">
                 <h2>Settings</h2>
                 <h3>Units</h3>
                 <p>
-                    <label><input type="radio" name="MetricUnits" value="1" /> Metric</label>
-                    <label><input type="radio" name="MetricUnits" value="0" /> Imperial</label>
+                    <label><input type="radio" name="MetricUnits" id="metricUnits" value="1" /> Metric</label>
+                    <label><input type="radio" name="MetricUnits" id="imperialUnits" value="0" /> Imperial</label>
                 </p>
                 <h3>Refresh Rate</h3>
                 <p>
-                    <label>Every 
-                        <select>
+                    <label>
+                        Every
+                        <select id="refreshRate" name="RefreshRate">
                             <option value="1">1 minute</option>
                             <option value="5">5 minutes</option>
                             <option value="15">15 minutes</option>
@@ -43,9 +52,6 @@
                 <button type="button" class="mainbtn" id="SaveSettingsBtn">Save</button>
                 <button type="button" id="CancelSettingsBtn">Cancel</button>
             </section>
-            <div>
-                <button type="button" id="ShowAddBtn">Add Location</button>
-            </div>
             <section class="add-location">
                 <h2>Add Location</h2>
                 <input type="text" name="NewLocation" id="NewLocation" value="" placeholder="City, State, Contry" />

@@ -1,6 +1,8 @@
 import Helpers from './utilities.js';
 import Location from './Location.js';
 import LocationsView from './LocationsView.js';
+const defaultSettings = { metricUnits : false, refreshRate : 15 }
+
 export default 
 	class WeatherController {
 
@@ -10,13 +12,34 @@ export default
         this._locationsList = [];
         this._location = new Location();
         this._locationsView = new LocationsView(this._listEl);
+        this._settings = defaultSettings;
 	}
 
     init() {
+        this.loadSettings();
+
         this._locationsList = this.getLocations();
 		this.listLocations();
     }
 
+    loadSettings() {
+        Helpers.qs("#metricUnits").checked = this._settings.metricUnits;
+        Helpers.qs("#imperialUnits").checked = !this._settings.metricUnits;
+        Helpers.qs("#refreshRate").value = this._settings.refreshRate;
+        this._locationsView.setUnits(this._settings.metricUnits)
+    }
+
+    saveSettings(metricEl, refreshRateEl) {
+        const reloadList = this._settings.metricUnits != metricEl.checked;
+        this._settings.metricUnits = metricEl.checked;
+        this._settings.refreshRate = refreshRateEl.value;
+
+        this._locationsView.setUnits(this._settings.metricUnits)
+
+        if (reloadList) {
+            this.listLocations();
+        }
+    }
     getLocations() {
         return this._location.getLocations();
     }
@@ -54,7 +77,9 @@ export default
                         "lon": resp[0].lon,
                         "country": resp[0].country
                     }
+                    // saving list locally
                     this.saveList(newLocation);
+                    // reloading list on screen
                     this.listLocations();
                 }
             }
@@ -87,15 +112,17 @@ export default
     removeLocation(ev, loc) {
         ev.stopPropagation();
         ev.preventDefault();
-        console.log("removeLocation" + loc)
-        // fiding task in list
-        const task = this._locationsList.find(l => l.id === loc.id)
-        // removing item from list
-        this._locationsList.splice(this._locationsList.indexOf(task), 1)
-        //Saving data
-        this.saveList();
-        //updating UI
-        this.listLocations();
+        if (confirm(`Are you sure you want to remove ${loc.name} from your list?`)) {
+            console.log("removeLocation" + loc)
+            // fiding task in list
+            const task = this._locationsList.find(l => l.id === loc.id)
+            // removing item from list
+            this._locationsList.splice(this._locationsList.indexOf(task), 1)
+            //Saving data
+            this.saveList();
+            //updating UI
+            this.listLocations();
+        }
     }
 
     showLocationDetail(ev, loc) {

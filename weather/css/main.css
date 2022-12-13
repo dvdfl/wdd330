@@ -4,22 +4,45 @@
 body {
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     background-color: #E1E5F2;
+    margin: 0;
 }
-header nav {
+header {
     background-color: #022B3A;
+    /*background: rgb(2,0,36);
+    background: linear-gradient(0deg, rgba(2,0,36,1) 0%, rgba(9,9,121,1) 30%, #BFDBF7 40%);*/
 }
-header nav ul{
-    display: flex;
+.header-top{
+    display:flex;
+    justify-content:space-evenly;
 }
-header nav li {
-    list-style: none;
-    padding: 5px 10px;
-}
-header nav li,
-header nav li a {
-    color: white;
-    text-decoration: none;
+a.menu {
+    font-size: 1.8em;
     font-weight: bold;
+    margin: 5px 15px;
+    padding: 0 5px;
+    text-decoration: none;
+    /*color: #022B3A;
+    border: 2px solid #022B3A;*/
+    color:white;
+    border-radius: 3px;
+}
+
+/*header nav.responsive ul {
+    display: block;
+}
+*/
+header .title {
+    /*color: #022B3A;*/
+    color: white;
+    margin: 0 auto;
+    padding: 5px 20px
+}
+
+.options {
+ text-align: right;
+}
+main{
+    padding: .5em;
 }
 #locationsList, ul.details {
     padding: 0;
@@ -43,22 +66,27 @@ li.location>div{
     flex: 0 1 auto;
 }
 
-.add-location {
+li.detail {
+    padding: 1rem;
+}
+
+ul.details li {
+    border-bottom: 1px dashed gray;
+    padding: .5em;
+    list-style-type: none;
+}
+
+.add-location, .settings {
     padding: 1px 10px 10px;
     background-color: #ccdbdc;
     display: none;
-}
-.settings {
-    background-color: whitesmoke;
-    display: none;
+    margin-bottom: 2em;
+    border-bottom: 2px groove #022B3A;
+    border-top: 2px groove #022B3A;
 }
 .show {
     display: block;
-    animation: appear 1s;
-}
-ul.details li{
-    border-bottom: 1px dashed gray;
-    padding:.5em;
+    animation: appear 1.5s;
 }
 
 button {
@@ -69,6 +97,7 @@ button {
     margin: .2em;
     padding: .4em .9em;
     font-size: 1em;
+    cursor: pointer;
 }
 .mainbtn {
     background-color: #1F7A8C;
@@ -76,10 +105,15 @@ button {
 }
 .deletebtn {
     background-color: darkred;
-    padding: .2em .5em;
+    padding: .2em .6em;
     color: white;
+    border-radius: 0 10px 0 0;
+    margin: 0;
 }
-input {
+.optionbtn {
+    font-weight:bold;
+}
+input[type=text] {
     display: block;
     font-size: 1.1em;
     width: 90%;

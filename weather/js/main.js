@@ -5,20 +5,38 @@ import Helpers from './utilities.js';
 const controller = new WeatherController('locationsList');
 controller.init();
 
-Helpers.onTouch("#AddLocationBtn", (ev) => {
+Helpers.onClick("#AddLocationBtn", (ev) => {
     ev.stopPropagation();
     console.log(Helpers.qs("#NewLocation"))
     controller.addLocation(Helpers.qs("#NewLocation"));
 });
 
+Helpers.onClick("#SaveSettingsBtn", (ev) => {
+    ev.stopPropagation();
+    controller.saveSettings(Helpers.qs("#metricUnits"), Helpers.qs("#refreshRate"));
+    document.querySelector(".settings").classList.remove("show");
+});
+
 Helpers.onClick("#CancelLocationBtn", (ev) => {
     ev.stopPropagation();
     document.querySelector(".add-location").classList.remove("show");
-    Helpers.qs("#ShowAddBtn").style.display = "";
+    //Helpers.qs("#ShowAddBtn").style.display = "";
 });
 
-Helpers.onTouch("#ShowAddBtn", (ev) => {
+Helpers.onClick("#ShowAddBtn", (ev) => {
     ev.stopPropagation();
     document.querySelector(".add-location").classList.add("show");
-    Helpers.qs("#ShowAddBtn").style.display = "none";
+    document.querySelector(".settings").classList.remove("show");
+});
+
+Helpers.onClick("#CancelSettingsBtn", (ev) => {
+    ev.stopPropagation();
+    document.querySelector(".settings").classList.remove("show");
+    //Helpers.qs("#ShowAddBtn").style.display = "";
+});
+
+Helpers.onClick("#ShowSettings", (ev) => {
+    ev.stopPropagation();
+    document.querySelector(".settings").classList.add("show");
+    document.querySelector(".add-location").classList.remove("show");
 });
