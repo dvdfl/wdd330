@@ -7,9 +7,9 @@ body {
     margin: 0;
 }
 header {
-    /*background-color: #022B3A;*/
-    background: rgb(163,230,255);
-    background: linear-gradient(0deg, #BFDBF7 0%, #022B3A 50%, #E1E5F2 100%);
+    background-color: #022B3A;
+    /*background: rgb(2,0,36);
+    background: linear-gradient(0deg, rgba(2,0,36,1) 0%, rgba(9,9,121,1) 30%, #BFDBF7 40%);*/
 }
 .header-top{
     display:flex;

@@ -25,7 +25,7 @@ Helpers.onClick("#CancelLocationBtn", (ev) => {
 
 Helpers.onClick("#ShowAddBtn", (ev) => {
     ev.stopPropagation();
-    document.querySelector(".add-location").classList.toggle("show");
+    document.querySelector(".add-location").classList.add("show");
     document.querySelector(".settings").classList.remove("show");
 });
 
@@ -37,6 +37,6 @@ Helpers.onClick("#CancelSettingsBtn", (ev) => {
 
 Helpers.onClick("#ShowSettings", (ev) => {
     ev.stopPropagation();
-    document.querySelector(".settings").classList.toggle("show");
+    document.querySelector(".settings").classList.add("show");
     document.querySelector(".add-location").classList.remove("show");
 });
