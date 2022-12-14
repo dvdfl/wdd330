@@ -8,7 +8,7 @@
     <link href="css/main.css" rel="stylesheet" />
     <link href="css/medium.css" rel="stylesheet" />
     <link href="css/large.css" rel="stylesheet" />
-    <script type="module" src="js/main.js" defer></script>
+    <script type="module" src="js/main.js"></script>
 </head>
 <body>
     <div class="wrapper">
@@ -59,7 +59,10 @@
             <section class="panel" id="addLocation">
                 <h2>Add Location</h2>
                 <p>
-                    <input type="text" name="NewLocation" id="NewLocation" value="" placeholder="City, State, Contry" />
+                    <label>
+                        Location Name (City,state, Country)
+                        <input type="text" name="NewLocation" id="NewLocation" value="" placeholder="City, State, Contry" />
+                    </label>
                 </p>
                 <p>
                     <button type="button" class="mainbtn" id="AddLocationBtn">Add</button>
