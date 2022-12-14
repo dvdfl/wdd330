@@ -9,7 +9,7 @@ export default class LocationsView {
         this._metricUnits = isMetric;
     }
     /**
-    * Creates Html list items
+    * Creates HTML for list of items
     * @param {Array} list
     * @param {HtmlElement} element
     */
@@ -19,16 +19,22 @@ export default class LocationsView {
             this._listEl.innerHTML += `<li class="location" data-taskid="${item.localid}" id="locItem_${item.localid}"><h2 >${item.name}, ${item.country}</h2></li>`;
         });
     }
-    populateData(item, removeHandler, showDetailHandler) {
-        console.log(`-- populating location: ${item.name}  --`);
-        console.log(item);
-        const el = document.getElementById("locItem_" + item.localid);
+    /**
+     * Updates Location list item when additional information is available
+     * @param {Object} location
+     * @param {Function} removeHandler 
+     * @param {Function} showDetailHandler 
+     * */
+    populateData(location, removeHandler, showDetailHandler) {
+        console.log(`-- populating location: ${location.name}  --`);
+        console.log(location);
+        const el = document.getElementById("locItem_" + location.localid);
         const ds = getDegreesSign(this._metricUnits);
-        const iconsrc = `https://openweathermap.org/img/w/${item.weather[0].icon}.png`;
-        el.innerHTML = `<div><img src="${iconsrc}" alt="weather icon"></div><div><h2>${item.name}, ${item.country}</h2><h3>${item.weather[0].main}</h3></div>`;
-        el.innerHTML += `<div><h2>${formatTemp(item.main.temp, this._metricUnits)} </h2><h3>Max:${formatTemp(item.main.temp_max, this._metricUnits)}<br>Min:${formatTemp(item.main.temp_min, this._metricUnits)}</h3></div>`;
+        const iconsrc = `https://openweathermap.org/img/w/${location.weather[0].icon}.png`;
+        el.innerHTML = `<div><img src="${iconsrc}" alt="weather icon"></div><div><h2>${location.name}, ${location.country}</h2><h3>${location.weather[0].main}</h3></div>`;
+        el.innerHTML += `<div class="temps"><h2>${formatTemp(location.main.temp, this._metricUnits)} </h2><h3>Max:${formatTemp(location.main.temp_max, this._metricUnits)}<br>Min:${formatTemp(location.main.temp_min, this._metricUnits)}</h3></div>`;
         // adding show detail
-        el.addEventListener("click", ev => { showDetailHandler(ev, item) })
+        el.addEventListener("click", ev => { showDetailHandler(ev, location) })
 
         //buttons container
         const div = document.createElement("div");
@@ -38,30 +44,34 @@ export default class LocationsView {
         removeBtn.type = "button";
         removeBtn.className = "deletebtn";
         removeBtn.textContent = "X";
-        removeBtn.addEventListener("click", ev => { removeHandler(ev, item); })
+        removeBtn.addEventListener("click", ev => { removeHandler(ev, location); })
         div.appendChild(removeBtn);
         el.appendChild(div);
     }
-
-    showDetail(loc, backHandler) {
-        console.log("show detail")
-
-        const ds = getDegreesSign(this._metricUnits);
-        //const ss = getSpeedSign(this._metricUnits);
+    /**
+     * Displays detail of a location
+     * @param {Object} location: Location object 
+     * @param {Function} backButtonHandler: Back button handler function
+     * */
+    showDetail(location, backButtonHandler) {
+        // console.log("show detail")
+        const iconsrc = `https://openweathermap.org/img/w/${location.weather[0].icon}.png`;
+        // const ss = getSpeedSign(this._metricUnits);
         this._listEl.innerHTML = "<li class=detail>"
-                                + `<h2>${loc.name}</h2>`
-                                + `<h3>${loc.weather[0].description}</h3>`
+                                + `<div><img src="${iconsrc}" alt="Weather icon" class="detail-icon">`
+                                + `<h2>${location.name}</h2>`
+                                + `<h3>${location.weather[0].description}</h3>`
+                                + `<h3>${formatTemp(location.main.temp, this._metricUnits)}</h3></div>`
                                 + "<ul class=details>" 
-                                + `<li>Current Temp: ${formatTemp(loc.main.temp, this._metricUnits)}</li>`
-                                + `<li>Min: ${formatTemp(loc.main.temp_min, this._metricUnits)}</li>`
-                                + `<li>Max: ${formatTemp(loc.main.temp_max, this._metricUnits)}</li>`
-                                + `<li>Feels like: ${formatTemp(loc.main.feels_like, this._metricUnits)}</li>`
-                                + `<li>Humidity: ${loc.main.humidity} %</li>`
-                                + `<li>Wind: ${formatSpeed(loc.wind.speed, this._metricUnits)}</li>`
+                                + `<li>Feels like: ${formatTemp(location.main.feels_like, this._metricUnits)}</li>`
+                                + `<li>Min: ${formatTemp(location.main.temp_min, this._metricUnits)}</li>`
+                                + `<li>Max: ${formatTemp(location.main.temp_max, this._metricUnits)}</li>`
+                                + `<li>Humidity: ${location.main.humidity} %</li>`
+                                + `<li>Wind: ${formatSpeed(location.wind.speed, this._metricUnits)}</li>`
                                 + "</ul>"
                                 + '<p><button type="button" id="BackToListBtn"> &lt; back</button></p>'
                                 + "</li>";
-        Helpers.onClick("#BackToListBtn", ev => backHandler(ev));
+        Helpers.onClick("#BackToListBtn", ev => backButtonHandler(ev));
     }
 
 }

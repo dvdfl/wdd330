@@ -1,0 +1,22 @@
+@media only screen and (min-width: 770px) {
+    #locationsList {
+        display: flex;
+        flex-flow: row wrap;
+        justify-content: space-between;
+        gap: .5em;
+    }
+
+    li.location {
+        flex: 0 1 49%;
+    }
+
+    li.detail {
+        flex: 1 0 auto;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+    }
+
+        li.detail > p {
+            grid-column: 1/3;
+        }
+}

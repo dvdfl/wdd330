@@ -51,11 +51,10 @@ export default
         return this._location.getLocations();
     }
     /**
-     * Saves List on local storage
-     * @param {Task} task
-     * @param {String} key
-     */
-    saveList(location) {
+     * Saves List of location, it may also add a location to the list
+     * @param {Location} location:Location to add to the list (optional parameter)
+          */
+    saveList(location = null) {
         if (location) {
             this._locationsList.push(location)
         }
@@ -63,14 +62,18 @@ export default
     }
     /**
      * Adds location to the list and saves the list
+     * @param {Element} input field where location name is entered
+     * @param {Element} panel containing the form that will be hidden
      **/
     async addLocation(input, panel) {
         // textbox value
         const newLocationName = input.value;
         // if empty exit function
         if (!newLocationName.trim()) {
+            alert('Please enter a location name.')
             return;
         }
+
         // creating new task object
         this._location.findLocation(newLocationName).then(
             resp => {
@@ -101,36 +104,38 @@ export default
                 }
             }
         )
-        console.log(newLocationName);
+        //console.log(newLocationName);
     }
     /**
-     * */
+     * Lists locations on screen and fetches details if needed from API
+     */
     listLocations() {
         this._locationsView.renderLocationsList(this._locationsList);
         this._locationsList.forEach(loc => {
             if (loc.weather) {
-                console.log(`location: ${loc.name} is cached`);
+                //console.log(`location: ${loc.name} is cached`);
                 this._locationsView.populateData(loc, this.removeLocation.bind(this), this.showLocationDetail.bind(this));
             }
             else {
-                console.log(loc)
+                //console.log(loc)
                 this._location.fetchLocation(loc).then(res => {
-                    //console.log(res)
+                    //console.log(loc)
                     loc = res;
-                    console.log(loc)
                     this._locationsView.populateData(loc, this.removeLocation.bind(this), this.showLocationDetail.bind(this));
-                    //console.log("locations updated?");
-                    //console.log(this._locationsList);
                 })
             }
         })
     }
-
+    /**
+     * Removes location from list and updates listed items on screen after confiming the removal
+     * @param {Event} ev: Event object
+     * @param {Location} loc: Location be removed
+     * */
     removeLocation(ev, loc) {
         ev.stopPropagation();
         ev.preventDefault();
         if (confirm(`Are you sure you want to remove ${loc.name} from your list?`)) {
-            console.log("removeLocation" + loc)
+            //console.log("removeLocation" + loc)
             // fiding task in list
             const task = this._locationsList.find(l => l.id === loc.id)
             // removing item from list

@@ -1,0 +1,9 @@
+@media only screen and (min-width: 500px)  {
+    li.location > div > img {
+        margin: 20px;
+    }
+    .temps {
+        text-align: center;
+        font-size: revert;
+    }
+}

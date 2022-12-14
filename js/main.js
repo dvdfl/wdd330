@@ -38,27 +38,9 @@ const links = [
 	{
 		label: "Week 10 notes",
 		url: "week10/index.html"
-	},
-	{
-		label: "Weather App - Project",
-		url: "weather/"
 	}
 ]
-//async function fetchData(url,callback) {
-//	const response = await fetch(url);
-//	if (response.ok) {
-//		const data = await response.json();
-//		if (console && console.log) console.log(data); // this is for testing the call
-//		if(callback) {
-//			callback(data);
-//		}
-//		else {
-//			return data;
-//		}
-//	} else {
-//		throw Error(await response.text());
-//	}
-//}
+
 function loadList() {
 	//let data = fetchData("js/main.js")
 	console.log(document.getElementById("LinksList"));

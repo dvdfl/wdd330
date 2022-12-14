@@ -28,15 +28,6 @@ export default class Location {
         let storedList = Storage.getData(TodosStorageKey);
         if (!storedList) {
             storedList = [];
-            //this.saveLocationsList(
-            //    {
-            //    "localid": new Date().getTime(),
-            //    "name": "London",
-            //    "lat": 51.5085,
-            //    "lon": -0.1257,
-            //    "country": "GB"
-            //    }, TodosStorageKey);
-            //storedList = Storage.getData(TodosStorageKey);
             //storedList = [{
             //             "localid": new Date().getTime(),
             //             "name": "London",
@@ -73,7 +64,7 @@ export default class Location {
     }
     /**
      * Fetches data from API for a location
-     * @param {Location} location
+     * @param {Promise} location promise
      */
     async fetchLocation(loc) {
         return new Promise((resolve, reject) => {
@@ -87,7 +78,10 @@ export default class Location {
             })
         })
     }
-
+    /**
+     * Searches a location by name (City, State, Country)
+     * @returns {Promise} API Request result
+     * */
     async findLocation(locationName) {
         return this._api.requestCityByName(locationName);
     }

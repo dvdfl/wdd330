@@ -60,20 +60,38 @@ main{
 li.location {
     display: flex;
     justify-content: space-between;
-    align-items: center
+    align-items: center;
 }
-li.location>div{
+li.location img{
+    cursor: pointer;
+}
+.temps{
+    text-align: center;
+    font-size:small;
+}
+
+li.location > div {
     flex: 0 1 auto;
 }
 
 li.detail {
     padding: 1rem;
+    text-align:center
+}
+ul.details {
+    /*display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;*/
+}
+ul.details>li {
+    flex: 0 1 50%;
+    list-style-type: none;
+    padding: .5em 0;
+    border-bottom: 1px dashed gray;
 }
 
-ul.details li {
-    border-bottom: 1px dashed gray;
-    padding: .5em;
-    list-style-type: none;
+.detail-icon{
+    margin-bottom: -10px;
 }
 
 .panel {

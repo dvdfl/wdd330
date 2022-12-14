@@ -1,10 +1,19 @@
 body {
-	font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif
-}
-.bold{
+	font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+	background: linear-gradient(180deg, #fac95390 0%, #fac95330 25%, #fac95310 30%, #fac95300 40%);
+	background-color: #fac95320;
+	background-repeat: no-repeat;
 	font-weight: bold;
 }
 p.code{
 	background-color: lightblue;
 	white-space:break-spaces;
+}
+ol.mainlist li{
+	padding: 7px;
+	border-bottom: 1px dashed gray;
+}
+
+ol.mainlist li a{
+	text-decoration: none;
 }
