@@ -79,7 +79,7 @@ function getDegreesSign(isMetric){
     return isMetric ? "℃" : " ℉";
 }
 function getSpeedSign(isMetric) {
-    return isMetric ? "kph" : " mph";
+    return isMetric ? "kmph" : " mph";
 }
 
 function formatTemp(value, isMetric) {
